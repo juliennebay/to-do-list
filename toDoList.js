@@ -2,10 +2,12 @@ function loadScript(){
     const button = document.getElementsByTagName("button")[0]
 
     function newMessage(event){
-      const div = document.getElementsByClassName("text")[0]
-      const newP = document.createElement("p")
-      div.appendChild(newP)
-      newP.textContent = "are sweet"
+      const ul = document.getElementsByClassName("list")[0]
+      const li = document.createElement("li")
+      const input = document.getElementById("task")
+      ul.appendChild(li)
+      li.textContent = input.value
+      input.value = ""
     }
 
     button.addEventListener("click", newMessage)
