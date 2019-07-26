@@ -6,8 +6,14 @@ function loadScript(){
       const ul = document.getElementsByClassName("list")[0]
       const li = document.createElement("li")
       ul.appendChild(li)
-      li.textContent = input.value
+      li.innerHTML = `<span>${input.value}</span>` + " <a href='#' class='delete'>delete</a>"
       input.value = ""
+      const deleteElements = document.getElementsByClassName("delete")
+      deleteElements[deleteElements.length-1].addEventListener("click", deleteMessage)
+    }
+
+    function deleteMessage(event){
+        event.target.parentElement.style.display = "none"
     }
 
     button.addEventListener("click", newMessage)
