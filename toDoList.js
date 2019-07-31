@@ -6,14 +6,34 @@ function loadScript(){
       const ul = document.getElementsByClassName("list")[0]
       const li = document.createElement("li")
       ul.appendChild(li)
-      li.innerHTML = `<span>${input.value}</span>` + " <a href='#' class='delete'>delete</a>"
+
+      const checkboxItem = document.createElement("input")
+      li.appendChild(checkboxItem)
+      checkboxItem.classList.add("checkbox")
+      checkboxItem.setAttribute("type", "checkbox")
+      checkboxItem.addEventListener("click", strikeThru)
+
+      const newSpan = document.createElement("span")
+      const spanContent = document.createTextNode(input.value)
+      newSpan.appendChild(spanContent)
+      li.appendChild(newSpan)
+
+      const deleteItem = document.createElement("a")
+      const aContent = document.createTextNode(' delete')
+      deleteItem.appendChild(aContent)
+      li.appendChild(deleteItem)
+      deleteItem.setAttribute("href", '#')
+      deleteItem.addEventListener("click", deleteMessage)
+
       input.value = ""
-      const deleteElements = document.getElementsByClassName("delete")
-      deleteElements[deleteElements.length-1].addEventListener("click", deleteMessage)
     }
 
     function deleteMessage(event){
         event.target.parentElement.style.display = "none"
+    }
+
+    function strikeThru(event){
+        //fix this
     }
 
     button.addEventListener("click", newMessage)
