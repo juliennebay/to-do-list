@@ -2,7 +2,7 @@ function loadScript(){
     const button = document.getElementsByTagName("button")[0]
     const input = document.getElementById("task")
 
-    function newMessage(event){
+    function newMessage(){
       const ul = document.getElementsByClassName("list")[0]
       const li = document.createElement("li")
       ul.appendChild(li)
