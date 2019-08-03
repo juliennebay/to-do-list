@@ -11,7 +11,7 @@ function loadScript(){
       li.appendChild(checkboxItem)
       checkboxItem.classList.add("checkbox")
       checkboxItem.setAttribute("type", "checkbox")
-      checkboxItem.addEventListener("click", strikeThru)
+      checkboxItem.addEventListener("click", toggleStrikeThru)
 
       const newSpan = document.createElement("span")
       const spanContent = document.createTextNode(input.value)
@@ -19,7 +19,7 @@ function loadScript(){
       li.appendChild(newSpan)
 
       const deleteItem = document.createElement("a")
-      const aContent = document.createTextNode(' delete')
+      const aContent = document.createTextNode('delete')
       deleteItem.appendChild(aContent)
       li.appendChild(deleteItem)
       deleteItem.setAttribute("href", '#')
@@ -32,8 +32,12 @@ function loadScript(){
         event.target.parentElement.style.display = "none"
     }
 
-    function strikeThru(event){
-        //fix this
+    function toggleStrikeThru(event){
+        if (event.target.checked){
+            event.target.parentElement.getElementsByTagName("span")[0].style["text-decoration"] = "line-through"
+        } else {
+            event.target.parentElement.getElementsByTagName("span")[0].style["text-decoration"] = "inherit"
+        }
     }
 
     button.addEventListener("click", newMessage)
