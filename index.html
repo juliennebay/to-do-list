@@ -6,12 +6,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <h1>Get These Done ASAP</h1>
-        <label for="task">New Task:</label>
-        <input type="text" id="task" name="task" placeholder="type here">
-        <button>Add Task</button>
-        <div>
-            <ul class="list"></ul>
+        <div class="d-flex flex-column align-items-center">
+            <h1 class="p-3">Get These Done ASAP</h1>
+            <div>
+                <input type="text" id="task" name="task" placeholder="type here">
+                <button>Add Task</button>
+            </div>
+            <div>      
+                <ul class="list p-2 list-group"></ul>
+            </div>
         </div>
     </body>
 </html>

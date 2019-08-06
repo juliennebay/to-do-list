@@ -5,6 +5,7 @@ function loadScript(){
     function newMessage(){
       const ul = document.getElementsByClassName("list")[0]
       const li = document.createElement("li")
+      li.classList.add("list-group-item")
       ul.appendChild(li)
 
       const checkboxItem = document.createElement("input")
