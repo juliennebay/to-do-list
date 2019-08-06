@@ -16,13 +16,13 @@ function loadScript(){
       const newSpan = document.createElement("span")
       const spanContent = document.createTextNode(input.value)
       newSpan.appendChild(spanContent)
+      newSpan.classList.add("p-1")
       li.appendChild(newSpan)
 
-      const deleteItem = document.createElement("a")
-      const aContent = document.createTextNode('delete')
-      deleteItem.appendChild(aContent)
+      const deleteItem = document.createElement("img")
       li.appendChild(deleteItem)
-      deleteItem.setAttribute("href", '#')
+      deleteItem.setAttribute("src", "icons/trashcan.svg")
+      deleteItem.classList.add("p-1", "cursor-pointer")
       deleteItem.addEventListener("click", deleteMessage)
 
       input.value = ""
