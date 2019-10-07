@@ -2,9 +2,10 @@ function loadScript(){
     const button = document.getElementsByTagName("button")[0]
     const taskInput = document.getElementById("task")
 //newMessage function creates the necessary HTML elements and binds event handlers to these elements.
-    function newMessage(item){
-        //line 5's parameter is either undefined (because line 63 calls it w/ nothing) 
-        //or a string (from localStorage) (line 67 with forEach)
+    function newMessage(localStorageItem){
+        if (taskInput.value.length || localStorageItem){
+        //line 5's parameter is either undefined (because line 71 calls it w/ nothing) 
+        //or a string (from localStorage) (line 75 with forEach)
       const ul = document.getElementsByClassName("list")[0]
       const li = document.createElement("li")
       li.classList.add("list-group-item")
@@ -17,7 +18,7 @@ function loadScript(){
       checkboxItem.addEventListener("click", toggleStrikeThru)
 
       const newSpan = document.createElement("span")
-      const spanContent = document.createTextNode((item && item.todo) || taskInput.value)
+      const spanContent = document.createTextNode((localStorageItem && localStorageItem.todo) || taskInput.value)
       newSpan.appendChild(spanContent)
       newSpan.classList.add("p-1")
       li.appendChild(newSpan)
@@ -28,7 +29,8 @@ function loadScript(){
       deleteItem.classList.add("p-1", "cursor-pointer")
       deleteItem.addEventListener("click", deleteMessage)
 //the if statement below makes sure that items that already exist (in localstorage) aren't duplicated
-      if (!item) {
+//very first time when an item goes into local storage
+      if (!localStorageItem) {
         const todoItems = JSON.parse(localStorage.getItem("todos")) || []
         todoItems.push({todo: taskInput.value, checked: false})
         localStorage.setItem("todos", JSON.stringify(todoItems))
@@ -39,9 +41,11 @@ function loadScript(){
 //which is the second child of li (the first child being the checkbox)
 //therefore, we must make sure that the span exists before clicking the checkbox item,
 //which is what calles toggleStrikeThru      
-      if (item && item.checked === true){
+      if (localStorageItem && localStorageItem.checked === true){
         checkboxItem.click({target: { checked: true, parentElement: li}})
-      }
+        //checkboxItem.click is same as line 17. so it's like calling toggleStrikeThru
+        }
+        }
     }
 //deleteMessage function hides the selected list item & also removes it from localStorage
     function deleteMessage(event){
